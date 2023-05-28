@@ -1,0 +1,52 @@
+import java.awt.*;
+import java.applet.*;
+import java.awt.event.*;
+
+@SuppressWarnings("serial")
+public class KeyboardDemo extends Applet implements KeyListener
+{
+    String msg = "";
+ 
+    public void init()
+    {
+        addKeyListener(this);
+    }
+ 
+    public void keyReleased(KeyEvent k)
+    {
+        msg="Key Released";
+    	showStatus("Key Released");
+        repaint();
+    }
+ 
+    public void keyTyped(KeyEvent k)
+    {
+    	msg="Key Typed";
+        showStatus("Key Typed");
+        repaint();
+    }
+ 
+    public void keyPressed(KeyEvent k)
+    {
+    	
+    	
+    	msg="Key Pressed";
+    	showStatus("Key Pressed");
+        repaint();
+        int key=k.getKeyCode();
+       
+        
+        if(key==KeyEvent.VK_UP){
+        		msg=msg+":KEY UP";
+        }else if(key==KeyEvent.VK_DOWN){
+			msg=msg+":KEY Down ";
+		}else{
+			msg=msg+": Other Key is pressed";
+			} 
+    }
+ 
+    public void paint(Graphics g)
+    {
+        g.drawString(msg, 10, 10);
+    }
+}
